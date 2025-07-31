@@ -130,8 +130,68 @@ variable "vm_web_core_fraction" {
 ### Задание 3
 
 1. Создайте в корне проекта файл 'vms_platform.tf' . Перенесите в него все переменные первой ВМ.
+   
+```bash
+variable "vm_db_family" {
+  type = string
+  default = "ubuntu-2004-lts"
+  description = "ubuntu ver"
+}
+
+variable "vm_db_name" {
+  type = string
+  default = "netology-develop-platform-db"
+  description = "instance name"
+}
+
+variable "vm_db_platform_id" {
+  type = string
+  default = "standard-v1"
+  description = "Platform ID"
+}
+
+variable "vm_db_cores" {
+  type = string
+  default = "2"
+  description = "vCPU"
+}
+
+variable "vm_db_memory" {
+  type = string
+  default = "2"
+  description = "VM memory"
+}
+
+variable "vm_db_core_fraction" {
+  type = string
+  default = "20"
+  description = "core fraction"
+}
+
+variable "default_zone2" {
+  type        = string
+  default     = "ru-central1-b"
+  description = "https://cloud.yandex.ru/docs/overview/concepts/geo-scope"
+}
+
+
+variable "vpc_name2" {
+  type        = string
+  default     = "develop2"
+  description = "VPC network & subnet name"
+}
+
+variable "default_cidr2" {
+  type        = list(string)
+  default     = ["10.0.2.0/24"]
+  description = "https://cloud.yandex.ru/docs/vpc/operations/subnet-create"
+}
+```
+
 2. Скопируйте блок ресурса и создайте с его помощью вторую ВМ в файле main.tf: **"netology-develop-platform-db"** ,  ```cores  = 2, memory = 2, core_fraction = 20```. Объявите её переменные с префиксом **vm_db_** в том же файле ('vms_platform.tf').  ВМ должна работать в зоне "ru-central1-b"
 3. Примените изменения.
+
+![hw_02](https://github.com/Qshar1408/hw_02/blob/main/img/hw_02_008.png)
 
 
 ### Задание 4
