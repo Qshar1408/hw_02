@@ -302,9 +302,27 @@ locals {
 Изучите содержимое файла console.tf. Откройте terraform console, выполните следующие задания: 
 
 1. Напишите, какой командой можно отобразить **второй** элемент списка test_list.
+
+![hw_02](https://github.com/Qshar1408/hw_02/blob/main/img/hw_02_018.png)
+
 2. Найдите длину списка test_list с помощью функции length(<имя переменной>).
+
+![hw_02](https://github.com/Qshar1408/hw_02/blob/main/img/hw_02_019.png)
+  
 3. Напишите, какой командой можно отобразить значение ключа admin из map test_map.
+
+![hw_02](https://github.com/Qshar1408/hw_02/blob/main/img/hw_02_020.png)
+
 4. Напишите interpolation-выражение, результатом которого будет: "John is admin for production server based on OS ubuntu-20-04 with X vcpu, Y ram and Z virtual disks", используйте данные из переменных test_list, test_map, servers и функцию length() для подстановки значений.
+
+```bash
+
+output "admin_server_info" {
+  value =  "${local.test_map.admin} is admin for ${local.test_list[length(local.test_list)-1]} server based on OS ${local.servers[local.test_list[length(local.test_list)-1]]["image"]} with ${local.servers[local.test_list[length(local.test_list)-1]]["cpu"]} vcpu, ${local.servers[local.test_list[length(local.test_list)-1]]["ram"]} ram, and ${local.servers.production["disks"][0]}, ${local.servers.production["disks"][1]}, ${local.servers.production["disks"][2]}, ${local.servers.production["disks"][3]} virtual disks."
+}
+```
+
+![hw_02](https://github.com/Qshar1408/hw_02/blob/main/img/hw_02_021.png)
 
 **Примечание**: если не догадаетесь как вычленить слово "admin", погуглите: "terraform get keys of map"
 
