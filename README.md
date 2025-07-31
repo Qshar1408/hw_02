@@ -67,9 +67,65 @@
 ### Задание 2
 
 1. Замените все хардкод-**значения** для ресурсов **yandex_compute_image** и **yandex_compute_instance** на **отдельные** переменные. К названиям переменных ВМ добавьте в начало префикс **vm_web_** .  Пример: **vm_web_name**.
-2. Объявите нужные переменные в файле variables.tf, обязательно указывайте тип переменной. Заполните их **default** прежними значениями из main.tf. 
+
+#### Изменения в main.tf
+```bash
+data "yandex_compute_image" "ubuntu" {
+  family = var.vm_web_family
+}
+resource "yandex_compute_instance" "platform" {
+  name        = var.vm_web_name
+  platform_id = var.vm_web_platform_id
+  resources {
+    cores         = var.vm_web_cores
+    memory        = var.vm_web_memory
+    core_fraction = var.vm_web_core_fraction
+```
+
+2. Объявите нужные переменные в файле variables.tf, обязательно указывайте тип переменной. Заполните их **default** прежними значениями из main.tf.
+
+#### Изменения в variables.tf
+```bash
+variable "vm_web_family" {
+  type = string
+  default = "ubuntu-2004-lts"
+  description = "ubuntu ver"
+}
+
+variable "vm_web_name" {
+  type = string
+  default = "netology-develop-plarform-web"
+  description = "instance name"
+}
+
+variable "vm_web_platform_id" {
+  type = string
+  default = "standard-v1"
+  description = "Platform ID"
+}
+
+variable "vm_web_cores" {
+  type = string
+  default = "2"
+  description = "vCPU"
+}
+
+variable "vm_web_memory" {
+  type = string
+  default = "1"
+  description = "VM memory"
+}
+
+variable "vm_web_core_fraction" {
+  type = string
+  default = "5"
+  description = "core fraction"
+}
+```
+
 3. Проверьте terraform plan. Изменений быть не должно. 
 
+![hw_02](https://github.com/Qshar1408/hw_02/blob/main/img/hw_02_007.png)
 
 ### Задание 3
 
