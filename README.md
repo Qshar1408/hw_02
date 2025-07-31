@@ -199,6 +199,19 @@ variable "default_cidr2" {
 1. Объявите в файле outputs.tf **один** output , содержащий: instance_name, external_ip, fqdn для каждой из ВМ в удобном лично для вас формате.(без хардкода!!!)
 2. Примените изменения.
 
+```bash
+output "VMs" {
+  value = {
+    instance_name1 = yandex_compute_instance.platform.name
+    external_ip1 = yandex_compute_instance.platform.network_interface.0.nat_ip_address
+    instance_name2 = yandex_compute_instance.platform2.name
+    external_ip2 = yandex_compute_instance.platform2.network_interface.0.nat_ip_address
+  }
+}
+```
+
+![hw_02](https://github.com/Qshar1408/hw_02/blob/main/img/hw_02_009.png)
+
 В качестве решения приложите вывод значений ip-адресов команды ```terraform output```.
 
 
