@@ -30,6 +30,21 @@
 2. Создайте сервисный аккаунт и ключ. [service_account_key_file](https://terraform-provider.yandexcloud.net).
 4. Сгенерируйте новый или используйте свой текущий ssh-ключ. Запишите его открытую(public) часть в переменную **vms_ssh_public_root_key**.
 5. Инициализируйте проект, выполните код. Исправьте намеренно допущенные синтаксические ошибки. Ищите внимательно, посимвольно. Ответьте, в чём заключается их суть.
+
+![hw_02](https://github.com/Qshar1408/hw_02/blob/main/img/hw_02_001.png)
+
+#### Ошибки:
+
+   * Строка platform_id = "standart-v4" -> неверно написано слово standard
+   * Версия v4 неверная. Согласно документации Yandex.Cloud (https://cloud.yandex.ru/docs/compute/concepts/vm-platforms) платформы могут быть только v1, v2 и v3.
+   * В строке cores = 1 указано неправильное количество ядер процессора. Согласно документации Yandex.Cloud (https://cloud.yandex.ru/docs/compute/concepts/performance-levels) минимальное количество виртуальных ядер - 2.
+
+![hw_02](https://github.com/Qshar1408/hw_02/blob/main/img/hw_02_002.png)
+
+![hw_02](https://github.com/Qshar1408/hw_02/blob/main/img/hw_02_003.png)
+
+![hw_02](https://github.com/Qshar1408/hw_02/blob/main/img/hw_02_004.png)
+
 6. Подключитесь к консоли ВМ через ssh и выполните команду ``` curl ifconfig.me```.
 Примечание: К OS ubuntu "out of a box, те из коробки" необходимо подключаться под пользователем ubuntu: ```"ssh ubuntu@vm_ip_address"```. Предварительно убедитесь, что ваш ключ добавлен в ssh-агент: ```eval $(ssh-agent) && ssh-add``` Вы познакомитесь с тем как при создании ВМ создать своего пользователя в блоке metadata в следующей лекции.;
 8. Ответьте, как в процессе обучения могут пригодиться параметры ```preemptible = true``` и ```core_fraction=5``` в параметрах ВМ.
