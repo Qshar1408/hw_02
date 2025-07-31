@@ -218,8 +218,27 @@ output "VMs" {
 ### Задание 5
 
 1. В файле locals.tf опишите в **одном** local-блоке имя каждой ВМ, используйте интерполяцию ${..} с НЕСКОЛЬКИМИ переменными по примеру из лекции.
+
+```bash
+locals {
+  project = "netology-develop-platform"
+  env_web = "web"
+  env_db = "db"
+  vm_web_instance_name = "${local.project}-${local.env_web}"
+  vm_db_instance_name = "${local.project}-${local.env_db}"
+
+}
+```
+
 2. Замените переменные внутри ресурса ВМ на созданные вами local-переменные.
+
+![hw_02](https://github.com/Qshar1408/hw_02/blob/main/img/hw_02_010.png)
+
+![hw_02](https://github.com/Qshar1408/hw_02/blob/main/img/hw_02_011.png)
+
 3. Примените изменения.
+
+![hw_02](https://github.com/Qshar1408/hw_02/blob/main/img/hw_02_012.png)
 
 
 ### Задание 6
