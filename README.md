@@ -265,7 +265,14 @@ locals {
      }
    }
    ```
-3. Создайте и используйте отдельную map(object) переменную для блока metadata, она должна быть общая для всех ваших ВМ.
+
+![hw_02](https://github.com/Qshar1408/hw_02/blob/main/img/hw_02_013.png)
+
+![hw_02](https://github.com/Qshar1408/hw_02/blob/main/img/hw_02_014.png)
+
+![hw_02](https://github.com/Qshar1408/hw_02/blob/main/img/hw_02_015.png)
+   
+2. Создайте и используйте отдельную map(object) переменную для блока metadata, она должна быть общая для всех ваших ВМ.
    ```
    пример из terraform.tfvars:
    metadata = {
@@ -273,9 +280,13 @@ locals {
      ssh-keys           = "ubuntu:ssh-ed25519 AAAAC..."
    }
    ```  
+
+![hw_02](https://github.com/Qshar1408/hw_02/blob/main/img/hw_02_016.png)
   
-5. Найдите и закоментируйте все, более не используемые переменные проекта.
-6. Проверьте terraform plan. Изменений быть не должно.
+3. Найдите и закоментируйте все, более не используемые переменные проекта.
+4. Проверьте terraform plan. Изменений быть не должно.
+
+![hw_02](https://github.com/Qshar1408/hw_02/blob/main/img/hw_02_017.png)
 
 ------
 
